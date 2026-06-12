@@ -64,7 +64,15 @@ OASIZ_CONFIG=./config.json go run ./cmd/oasiz-postgres-mcp
 MCP クライアントから使う場合は、先にバイナリをビルドしておくと設定が安定します。
 
 ```sh
-go build -o ./bin/oasiz-postgres-mcp ./cmd/oasiz-postgres-mcp
+make build
+```
+
+`make build` では、現在のコミットにタグが付いている場合はタグ名をバージョンとして埋め込みます。タグがない場合は `YYYYMMDDHHMMSS` 形式の日時文字列を埋め込みます。
+
+バージョン情報は `-v` で確認できます。
+
+```sh
+./bin/oasiz-postgres-mcp -v
 ```
 
 ## MCP サーバー設定例
